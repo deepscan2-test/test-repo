@@ -22,3 +22,4 @@ function f(){
   for (j = 0; j < array.length; j++) {  
   }
 }
+f();
