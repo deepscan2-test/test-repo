@@ -35,3 +35,10 @@ function CWE_480_481() { // BAD_ASSIGN_IN_CONDITION
     var x = -1;
     if (x = -1) console.log('Error!', x);
 }
+function f(){
+  i = 1;         // Noncompliant; i is global
+
+  for (j = 0; j < array.length; j++) {  
+  }
+}
+f();
