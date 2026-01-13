@@ -41,3 +41,27 @@ async function sonar_foo() {
       return result; // Noncompliant: Jump statement 'return' in the 'finally' block
   }
 }
+
+
+async function sonar_foo2() {
+  let result, connection;
+  try {
+      connection = await connect();
+      result = connection.send(1);
+  } catch(err) {
+      console.error(err.message);
+      return foo();
+  } finally {
+      if (connection) {
+          connection.close();
+      }
+      for (let i = 0; i < 10; i++) {
+        let q = i + 1;
+        if (q == i) {
+          break; // ignored
+        }
+      }
+      return result; // Noncompliant: Jump statement 'return' in the 'finally' block
+  }
+}
+
