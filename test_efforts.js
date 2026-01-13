@@ -12,7 +12,7 @@ function t1 () {
   }
 }
 
-function t2 () {
+function t2 (param, param2, param3, param4) {
   try {
     const a = {
       b,
@@ -22,7 +22,7 @@ function t2 () {
   } catch (e) {
     return bar();
   } finally {
-    return finalFunc(); // BAD_FINALLY_CONTROL_FLOW alarm because this will overwirte try-catch return value.
+    return param ? finalFunc() : (param2 ? finalFunc() : (param3 ? finalFunc() : null)) ; // BAD_FINALLY_CONTROL_FLOW alarm because this will overwirte try-catch return value.
   }
 }
 
